@@ -38,13 +38,24 @@
     *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
   }
   body{
-    background:var(--bg);
+    background:
+      linear-gradient(180deg, rgba(10,11,14,0.62), rgba(10,11,14,0.92)),
+      url('background.jpg') center center / cover fixed no-repeat,
+      var(--bg);
     color:var(--ink);
     font-family:var(--font-body);
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
     position:relative;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at 20% 20%, rgba(52,211,153,0.18), transparent 35%), radial-gradient(circle at 80% 10%, rgba(245,166,35,0.12), transparent 28%);
+    pointer-events:none;
+    z-index:0;
   }
   a{color:inherit; text-decoration:none;}
   ::selection{background:var(--em); color:#04140D;}
@@ -71,7 +82,8 @@
   .progress{position:fixed; top:0; left:0; height:2px; background:linear-gradient(90deg, var(--em), var(--amber)); z-index:100; width:0%; transition:width .1s linear;}
 
   main{position:relative; z-index:3;}
-  .wrap{max-width:960px; margin:0 auto; padding:0 28px;}
+  .wrap{width:min(100%, 1440px); margin:0 auto; padding:0 40px;}
+  @media(max-width:720px){ .wrap{padding:0 20px;} }
 
   nav{
     position:sticky; top:0; z-index:50;
@@ -80,10 +92,11 @@
     border-bottom:1px solid var(--line);
   }
   .nav-inner{
-    max-width:960px; margin:0 auto; padding:0 28px;
+    width:min(100%, 1440px); margin:0 auto; padding:0 40px;
     display:flex; align-items:center; justify-content:space-between;
     height:56px;
   }
+  @media(max-width:720px){ .nav-inner{padding:0 20px;} }
   .nav-brand{
     font-family:var(--font-mono); font-size:13px; font-weight:500;
     display:flex; align-items:center; gap:8px;
@@ -140,23 +153,15 @@
   .pitch{
     font-size:17px; color:var(--ink-soft); max-width:500px; margin-bottom:34px;
   }
-  .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:38px;}
-  .btn{
-    position:relative;
-    font-family:var(--font-mono); font-size:13px; padding:12px 20px;
-    border:1px solid var(--line-strong); border-radius:6px;
-    display:inline-flex; align-items:center; gap:8px;
-    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
-    background:var(--card);
+  .icon-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px;}
+  .icon-link{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:44px; height:44px; border:1px solid var(--line-strong); border-radius:50%;
+    background:rgba(20,22,27,0.74); color:var(--ink-soft);
+    transition:transform .2s ease, border-color .2s ease, color .2s ease, background .2s ease;
   }
-  .btn-primary{background:var(--em); color:#04140D; border-color:var(--em); font-weight:500;}
-  .btn-primary:hover{box-shadow:0 8px 24px -8px rgba(52,211,153,0.55); transform:translateY(-2px);}
-  .btn-ghost:hover{border-color:var(--em); color:var(--em); transform:translateY(-2px);}
-  .social-row{display:flex; flex-wrap:wrap; gap:20px; font-family:var(--font-mono); font-size:13px;}
-  .social-row a{color:var(--ink-soft); position:relative; padding-bottom:3px;}
-  .social-row a::after{content:""; position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--em); transform:scaleX(0); transform-origin:left; transition:transform .2s ease;}
-  .social-row a:hover{color:var(--ink);}
-  .social-row a:hover::after{transform:scaleX(1);}
+  .icon-link:hover{color:var(--ink); border-color:rgba(52,211,153,0.38); transform:translateY(-2px); background:rgba(25,28,34,0.95);}
+  .icon-link svg{width:18px; height:18px; fill:currentColor;}
 
   .hero-visual{
     position:relative;
@@ -174,32 +179,6 @@
     min-height:520px;
     object-fit:cover;
     display:block;
-  }
-  .hero-overlay{
-    position:absolute;
-    inset:auto 0 0 0;
-    padding:18px 18px 20px;
-    background:linear-gradient(180deg, rgba(10,11,14,0) 0%, rgba(10,11,14,0.85) 100%);
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:12px;
-  }
-  .hero-badge{
-    font-family:var(--font-mono); font-size:11px; color:var(--em);
-    background:rgba(10,11,14,0.72);
-    border:1px solid rgba(52,211,153,0.22);
-    padding:6px 10px;
-    border-radius:999px;
-    backdrop-filter:blur(8px);
-  }
-  .hero-caption{
-    font-family:var(--font-display);
-    font-size:16px;
-    font-weight:600;
-    letter-spacing:-0.01em;
-    color:var(--ink);
-    text-align:right;
   }
   .float-badge{
     font-family:var(--font-mono); font-size:11px; color:var(--em);
@@ -246,17 +225,11 @@
   .fact-row .v{font-weight:500; text-align:right; color:var(--ink);}
 
   .log-row{
-    display:grid; grid-template-columns:110px 1fr; gap:22px;
+    display:grid; grid-template-columns:1fr; gap:10px;
     padding:26px 0; border-top:1px solid var(--line);
     position:relative;
   }
   .log-row:last-child{border-bottom:1px solid var(--line);}
-  .verdict{
-    font-family:var(--font-mono); font-size:11px; font-weight:600;
-    color:var(--em); background:var(--em-soft);
-    padding:5px 10px; border-radius:4px; height:fit-content;
-    letter-spacing:.03em; border:1px solid rgba(52,211,153,0.25);
-  }
   .log-role{font-family:var(--font-display); font-weight:600; font-size:18px; margin-bottom:3px;}
   .log-meta{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); margin-bottom:12px;}
   .log-desc{color:var(--ink-soft); font-size:14px; max-width:560px;}
@@ -291,6 +264,22 @@
     font-family:var(--font-mono); font-size:12px; color:var(--ink-faint);
     border-top:1px dashed var(--line); padding-top:14px; margin-top:6px;
   }
+  .project-details{margin-top:14px;}
+  .project-details summary{
+    list-style:none;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--em);
+    margin-bottom:12px;
+  }
+  .project-details summary::-webkit-details-marker{display:none;}
+  .project-details summary::after{content:"▾"; font-size:11px; transition:transform .2s ease;}
+  .project-details[open] summary::after{transform:rotate(180deg);}
+  .project-short{color:var(--ink-soft); font-size:14.5px; max-width:650px; margin-bottom:10px;}
 
   .stat-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:0 20px 40px -28px rgba(0,0,0,0.6);}
   @media(max-width:680px){.stat-grid{grid-template-columns:repeat(2, 1fr);}}
@@ -299,9 +288,18 @@
   .stat-num{font-family:var(--font-hero); font-size:36px; font-weight:800; margin-bottom:6px; color:var(--em);}
   .stat-label{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.04em;}
   .stat-sub{font-size:12px; color:var(--ink-soft); margin-top:8px;}
-  .cp-links{display:flex; flex-wrap:wrap; gap:16px; margin-top:26px; font-family:var(--font-mono); font-size:13px;}
-  .cp-links a{border-bottom:1px solid var(--line); padding-bottom:2px;}
-  .cp-links a:hover{color:var(--em); border-color:var(--em);}
+  .cp-links{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
+  .cp-links a{
+    display:inline-flex; align-items:center; gap:10px; justify-content:center;
+    min-height:42px; padding:0 14px; border:1px solid var(--line-strong); border-radius:999px;
+    background:rgba(20,22,27,0.74); color:var(--ink-soft); font-family:var(--font-mono); font-size:12px;
+    transition:transform .2s ease, border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .cp-links a:hover{color:var(--ink); border-color:rgba(52,211,153,0.38); transform:translateY(-2px); background:rgba(25,28,34,0.95);}
+  .cp-links svg{width:17px; height:17px; fill:currentColor;}
+  .cp-links .brand-cf{color:#1F8ACB;}
+  .cp-links .brand-lc{color:#FFA116;}
+  .cp-links .brand-cc{color:#5B4638;}
 
   .skill-group{margin-bottom:24px;}
   .skill-cat{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; margin-bottom:12px;}
@@ -314,19 +312,18 @@
   }
   .pill:hover{border-color:var(--em); color:var(--em); transform:translateY(-2px); box-shadow:0 8px 16px -10px rgba(52,211,153,0.4);}
 
-  #contact{border-bottom:none;}
-  .contact-head{
-    font-family:var(--font-hero); font-weight:800; font-size:clamp(32px,5vw,48px);
-    letter-spacing:-0.02em; margin-bottom:18px; max-width:560px;
-    background:linear-gradient(100deg, #FFFFFF 30%, var(--em) 100%);
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  .contact-sub{color:var(--ink-soft); margin-bottom:36px; max-width:480px; font-size:15.5px;}
-  .contact-row{display:flex; flex-wrap:wrap; gap:14px;}
-
   footer{padding:32px 0; position:relative; z-index:3;}
   .foot-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
   .foot-inner p{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint);}
+  .footer-links{display:flex; flex-wrap:wrap; gap:10px;}
+  .footer-links a{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:40px; height:40px; border:1px solid var(--line-strong); border-radius:50%;
+    background:rgba(20,22,27,0.74); color:var(--ink-soft);
+    transition:transform .2s ease, border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .footer-links a:hover{color:var(--ink); border-color:rgba(52,211,153,0.38); transform:translateY(-2px); background:rgba(25,28,34,0.95);}
+  .footer-links svg{width:16px; height:16px; fill:currentColor;}
 
   .project-list{display:grid; gap:18px;}
   .project-meta{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; font-family:var(--font-mono); font-size:11px; color:var(--ink-faint);}
@@ -361,7 +358,6 @@
       <li><a href="#about" data-nav>About</a></li>
       <li><a href="#experience" data-nav>Experience</a></li>
       <li><a href="#projects" data-nav>Projects</a></li>
-      <li><a href="#contact" data-nav>Contacts</a></li>
     </ul>
   </div>
 </nav>
@@ -374,41 +370,29 @@
       <div>
         <h1>Adesh Mishra</h1>
         <div class="role"><span class="bar"></span>Software Development Engineer</div>
-        <p class="pitch">B.Tech CSE student at IIIT Bhopal building full-stack systems and backend infrastructure, while solving more than 1000 competitive programming problems along the way.</p>
-        <div class="cta-row">
-          <a href="#projects" class="btn btn-primary magnetic">View projects</a>
-          <a href="https://drive.google.com/file/d/1I_lKMUFa4dDu861dQmWNdf5oU4xjvb2V/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-ghost magnetic" id="resume-btn">Download resume</a>
-          <a href="#contact" class="btn btn-ghost magnetic">Contact me</a>
-        </div>
-        <div class="social-row">
-          <a href="https://github.com/adeshmishir" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://linkedin.com/in/adesh-mishra-646ba128b" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://leetcode.com/u/mr_adesh_mishra_770" target="_blank" rel="noopener">LeetCode</a>
-          <a href="https://codeforces.com/profile/mishra_adesh" target="_blank" rel="noopener">Codeforces</a>
-          <a href="mailto:mishraadesh770@gmail.com">Email</a>
-        </div>
+        <p class="pitch">I build reliable full-stack systems, enjoy solving hard engineering problems, and am exploring Gen AI workflows alongside product development.</p>
       </div>
       <div style="position:relative;">
         <div class="hero-visual">
           <img class="hero-portrait" src="Adesh%20Mishra.jpg" alt="Adesh Mishra portrait">
-          <div class="hero-overlay">
-            <div class="hero-badge">Specialist • 863 solved</div>
-            <div class="hero-caption">Adesh Mishra</div>
-          </div>
+        </div>
+        <div class="icon-row">
+          <a class="icon-link" href="https://github.com/adeshmishir" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.4-1.1-1.7-1.1-1.7-.9-.7.1-.7.1-.7 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.8-1.4-2.5-.3-5.1-1.3-5.1-5.8 0-1.3.5-2.4 1.1-3.2-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 .9a10.4 10.4 0 0 1 5.5 0c2.1-1.2 3-.9 3-.9.6 1.6.2 2.8.1 3.1.7.8 1.1 1.9 1.1 3.2 0 4.5-2.6 5.5-5.1 5.8.4.4.9 1.2.9 2.3v3.4c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg></a>
+          <a class="icon-link" href="https://linkedin.com/in/adesh-mishra-646ba128b" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.96v5.66H9.33V9h3.42v1.56h.05c.48-.9 1.65-1.86 3.39-1.86 3.62 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45Z"/></svg></a>
+          <a class="icon-link" href="https://www.instagram.com/adesh_mishrra/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.6-3.1a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/></svg></a>
+          <a class="icon-link" href="mailto:mishraadesh770@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.2-8 4.8-8-4.8V6l8 4.8L20 6v2.2Z"/></svg></a>
+          <a class="icon-link" href="tel:+919569401419" aria-label="Call"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 2.9 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1.3.4 2.7.6 4.1.6.7 0 1.3.6 1.3 1.3V20c0 .7-.6 1.3-1.3 1.3C11.3 21.3 2.7 12.7 2.7 2.7 2.7 2 .9 1.4 1.6 1.4H5c.7 0 1.3.6 1.3 1.3 0 1.4.2 2.8.6 4.1.1.4.1.9-.2 1.2l-2.1 2.8Z"/></svg></a>
         </div>
       </div>
     </div>
   </section>
 
   <section id="about" class="reveal">
-    <div class="section-head about-head-wrap">
-      <div class="tag">about</div>
-      <h2 class="about-head">About</h2>
-      <div class="about-kicker">How I work, what I care about, and what I’m building toward.</div>
-    </div>
+    <h2 class="about-head">About</h2>
+    <div class="about-kicker">How I work, what I care about, and what I’m building toward.</div>
     <div class="about-grid">
       <div class="about-body">
-        <p>I'm a Computer Science student who splits time between shipping full-stack products and solving competitive programming problems. Product work taught me to care about reliability and clarity. CP taught me to think in constraints and move fast under pressure.</p>
+        <p>I'm a Computer Science student who splits time between shipping full-stack products, exploring Gen AI systems, and solving competitive programming problems. Product work taught me to care about reliability and clarity. CP taught me to think in constraints and move fast under pressure.</p>
         <p>Currently focused on distributed systems, backend architecture, and interview-ready problem solving, while looking for SDE internship and new-grad opportunities where I can work on real infrastructure.</p>
       </div>
       <div class="facts">
@@ -422,11 +406,9 @@
   </section>
 
   <section id="experience" class="reveal">
-    <div class="tag">experience</div>
     <h2>Experience</h2>
 
     <div class="log-row">
-      <div class="verdict">ACCEPTED</div>
       <div>
         <div class="log-role">Full Stack Developer Intern</div>
         <div class="log-meta">Quantinent.ai</div>
@@ -438,7 +420,6 @@
     </div>
 
     <div class="log-row">
-      <div class="verdict">ACCEPTED</div>
       <div>
         <div class="log-role">Competitive Programming Team Lead</div>
         <div class="log-meta">Codame, IIIT Bhopal</div>
@@ -451,7 +432,6 @@
   </section>
 
   <section id="projects" class="reveal">
-    <div class="tag">projects</div>
     <h2>Featured builds</h2>
 
     <div class="project-list">
@@ -465,18 +445,15 @@
         <div class="project-meta">
           <span>Node.js</span><span>Express.js</span><span>BullMQ</span><span>Redis</span><span>PostgreSQL</span><span>Docker</span>
         </div>
-        <p class="proj-desc">Built a distributed job processing system with BullMQ and Redis, exposing HTTP endpoints to enqueue, monitor, and manage asynchronous jobs while persisting job metadata in PostgreSQL.</p>
-        <ul class="project-points">
-          <li>Implemented 5 fault-tolerant background workers with automatic retries up to 3 attempts, exponential backoff, and live job states for pending, processing, completed, and failed work.</li>
-          <li>Reduced failed-job recovery time by 40 percent through structured status tracking and retry handling.</li>
-          <li>Containerized the API, Redis, PostgreSQL, and worker services with Docker to keep deployment reproducible and worker scaling straightforward.</li>
-        </ul>
-        <div class="project-foot">
-          <div class="stack-row">
-            <span class="chip">PDF workflows</span><span class="chip">Retry logic</span><span class="chip">Worker scaling</span>
-          </div>
-          <div class="proj-links"><a href="https://github.com/adeshmishir/jobQueue" target="_blank" rel="noopener">GitHub ↗</a></div>
-        </div>
+        <p class="project-short">Built a distributed job processing system with BullMQ and Redis, exposing HTTP endpoints to enqueue, monitor, and manage asynchronous jobs while persisting job metadata in PostgreSQL.</p>
+        <details class="project-details">
+          <summary>Show full explanation</summary>
+          <ul class="project-points">
+            <li>Implemented 5 fault-tolerant background workers with automatic retries up to 3 attempts, exponential backoff, and live job states for pending, processing, completed, and failed work.</li>
+            <li>Reduced failed-job recovery time by 40 percent through structured status tracking and retry handling.</li>
+            <li>Containerized the API, Redis, PostgreSQL, and worker services with Docker to keep deployment reproducible and worker scaling straightforward.</li>
+          </ul>
+        </details>
       </div>
 
       <div class="proj-card">
@@ -489,52 +466,41 @@
         <div class="project-meta">
           <span>Streamlit</span><span>LangChain</span><span>FAISS</span><span>Mistral AI</span><span>PyPDF</span><span>Python</span><span>Live</span>
         </div>
-        <p class="proj-desc">Developed an AI-powered book Q&A assistant using Streamlit, LangChain, FAISS, and Mistral AI, supporting PDF uploads up to 100 MB and delivering context-aware answers across test queries.</p>
-        <ul class="project-points">
-          <li>Implemented an end-to-end RAG pipeline with PDF parsing, recursive chunking, embeddings, and FAISS vector search for semantic retrieval.</li>
-          <li>Indexed more than 1000 text chunks to improve response grounding and search quality across large documents.</li>
-          <li>Integrated retrieval chains, memory buffers, and prompt templates with Streamlit session state to preserve multi-turn context.</li>
-        </ul>
-        <div class="project-foot">
-          <div class="stack-row">
-            <span class="chip">RAG</span><span class="chip">Document search</span><span class="chip">Conversational AI</span>
-          </div>
-          <div class="proj-links"><a href="https://github.com/adeshmishir/Book_query_Resolver%28DocQuery%20AI%29" target="_blank" rel="noopener">GitHub ↗</a></div>
-        </div>
+        <p class="project-short">Developed an AI-powered book Q&A assistant using Streamlit, LangChain, FAISS, and Mistral AI, supporting PDF uploads up to 100 MB and delivering context-aware answers across test queries.</p>
+        <details class="project-details">
+          <summary>Show full explanation</summary>
+          <ul class="project-points">
+            <li>Implemented an end-to-end RAG pipeline with PDF parsing, recursive chunking, embeddings, and FAISS vector search for semantic retrieval.</li>
+            <li>Indexed more than 1000 text chunks to improve response grounding and search quality across large documents.</li>
+            <li>Integrated retrieval chains, memory buffers, and prompt templates with Streamlit session state to preserve multi-turn context.</li>
+          </ul>
+        </details>
       </div>
 
       <div class="proj-card">
         <div class="proj-top">
           <div class="proj-name">Forever</div>
           <div class="proj-links">
-            <a href="https://forever-plum.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
             <a href="https://github.com/adeshmishir/Forever" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
         </div>
         <div class="project-meta">
           <span>React.js</span><span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>Cloudinary</span>
         </div>
-        <p class="proj-desc">Built a full-stack clothing e-commerce platform with customer and admin workflows, product management, carts, and order handling.</p>
-        <ul class="project-points">
-          <li>Built 15 plus REST APIs to support product, inventory, cart, and order flows across the platform.</li>
-          <li>Created JWT-authenticated customer and admin portals with 20 plus reusable React components.</li>
-          <li>Configured Cloudinary for optimized image upload and delivery across 200 plus product listings, reducing backend storage load by 70 percent.</li>
-        </ul>
-        <div class="project-foot">
-          <div class="stack-row">
-            <span class="chip">E-commerce</span><span class="chip">Admin dashboard</span><span class="chip">Image delivery</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://forever-plum.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
-            <a href="https://github.com/adeshmishir/Forever" target="_blank" rel="noopener">GitHub ↗</a>
-          </div>
-        </div>
+        <p class="project-short">Built a full-stack clothing e-commerce platform with customer and admin workflows, product management, carts, and order handling.</p>
+        <details class="project-details">
+          <summary>Show full explanation</summary>
+          <ul class="project-points">
+            <li>Built 15 plus REST APIs to support product, inventory, cart, and order flows across the platform.</li>
+            <li>Created JWT-authenticated customer and admin portals with 20 plus reusable React components.</li>
+            <li>Configured Cloudinary for optimized image upload and delivery across 200 plus product listings, reducing backend storage load by 70 percent.</li>
+          </ul>
+        </details>
       </div>
     </div>
   </section>
 
   <section id="stats" class="reveal">
-    <!-- <div class="tag">cp_stats</div> -->
     <h2>Competitive programming</h2>
     <div class="stat-grid">
       <div class="stat-cell">
@@ -559,20 +525,25 @@
       </div>
     </div>
     <div class="cp-links">
-      <a href="https://codeforces.com/profile/mishra_adesh" target="_blank" rel="noopener">Codeforces profile ↗</a>
-      <a href="https://leetcode.com/u/mr_adesh_mishra_770" target="_blank" rel="noopener">LeetCode profile ↗</a>
-      <a href="https://codechef.com/users/gam_blossom_68" target="_blank" rel="noopener">CodeChef profile ↗</a>
+      <a href="https://codeforces.com/profile/mishra_adesh" target="_blank" rel="noopener" aria-label="Codeforces profile"><svg class="brand-cf" viewBox="0 0 24 24"><path d="M4 4h5v16H4V4Zm6 6h5v10h-5V10Zm6-6h4v16h-4V4Z"/></svg><span class="brand-cf">Codeforces</span></a>
+      <a href="https://leetcode.com/u/mr_adesh_mishra_770" target="_blank" rel="noopener" aria-label="LeetCode profile"><svg class="brand-lc" viewBox="0 0 24 24"><path d="M13.5 2.1 8.2 8.7 13.9 16h-3l-3-3.8L6 14.6V19h11v2H4V2h13v2h-3.5Z"/></svg><span class="brand-lc">LeetCode</span></a>
+      <a href="https://codechef.com/users/gam_blossom_68" target="_blank" rel="noopener" aria-label="CodeChef profile"><svg class="brand-cc" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5A8.51 8.51 0 0 0 12 3.5Zm0 15a6.5 6.5 0 1 1 6.5-6.5 6.51 6.51 0 0 1-6.5 6.5Z"/></svg><span class="brand-cc">CodeChef</span></a>
     </div>
   </section>
 
   <section id="skills" class="reveal">
-    <div class="tag">skills</div>
-    <h2>Toolbox</h2>
+    <h2>Skills</h2>
 
     <div class="skill-group">
       <div class="skill-cat">Languages</div>
       <div class="pill-row">
         <span class="pill">C++</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span><span class="pill">Python</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-cat">AI / Gen AI</div>
+      <div class="pill-row">
+        <span class="pill">Gen AI</span><span class="pill">LangChain</span><span class="pill">RAG</span><span class="pill">Prompt design</span>
       </div>
     </div>
     <div class="skill-group">
@@ -595,24 +566,19 @@
     </div>
   </section>
 
-  <section id="contact" class="reveal">
-    <div class="tag">contact</div>
-    <div class="contact-head">Let's build something.</div>
-    <p class="contact-sub">Open to SDE internship and new-grad roles. Reach out directly or find me on any of the platforms below.</p>
-    <div class="contact-row">
-      <a href="mailto:mishraadesh770@gmail.com" class="btn btn-primary magnetic">Email me</a>
-      <a href="https://linkedin.com/in/adesh-mishra-646ba128b" target="_blank" rel="noopener" class="btn btn-ghost magnetic">LinkedIn</a>
-      <a href="https://github.com/adeshmishir" target="_blank" rel="noopener" class="btn btn-ghost magnetic">GitHub</a>
-      <a href="https://drive.google.com/file/d/1I_lKMUFa4dDu861dQmWNdf5oU4xjvb2V/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-ghost magnetic" id="resume-btn-2">Resume</a>
-    </div>
-  </section>
-
 </div>
 </main>
 
 <footer>
   <div class="wrap foot-inner">
     <p>© 2026 Adesh Mishra</p>
+    <div class="footer-links">
+      <a href="https://github.com/adeshmishir" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.4-1.1-1.7-1.1-1.7-.9-.7.1-.7.1-.7 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.8-1.4-2.5-.3-5.1-1.3-5.1-5.8 0-1.3.5-2.4 1.1-3.2-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 .9a10.4 10.4 0 0 1 5.5 0c2.1-1.2 3-.9 3-.9.6 1.6.2 2.8.1 3.1.7.8 1.1 1.9 1.1 3.2 0 4.5-2.6 5.5-5.1 5.8.4.4.9 1.2.9 2.3v3.4c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg></a>
+      <a href="https://linkedin.com/in/adesh-mishra-646ba128b" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.96v5.66H9.33V9h3.42v1.56h.05c.48-.9 1.65-1.86 3.39-1.86 3.62 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45Z"/></svg></a>
+      <a href="https://www.instagram.com/adesh_mishrra/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.6-3.1a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/></svg></a>
+      <a href="mailto:mishraadesh770@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.2-8 4.8-8-4.8V6l8 4.8L20 6v2.2Z"/></svg></a>
+      <a href="tel:+919569401419" aria-label="Call"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 2.9 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1.3.4 2.7.6 4.1.6.7 0 1.3.6 1.3 1.3V20c0 .7-.6 1.3-1.3 1.3C11.3 21.3 2.7 12.7 2.7 2.7 2.7 2 .9 1.4 1.6 1.4H5c.7 0 1.3.6 1.3 1.3 0 1.4.2 2.8.6 4.1.1.4.1.9-.2 1.2l-2.1 2.8Z"/></svg></a>
+    </div>
   </div>
 </footer>
 

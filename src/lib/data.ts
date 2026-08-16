@@ -87,25 +87,26 @@ export const projects: Project[] = [
 
 export const cpStats = [
   {
-    value: 1455,
+    value: 1525,
     label: "Codeforces rating",
     sub: "Specialist (max)",
     href: profile.links.codeforces,
   },
   {
-    value: 863,
+    value: 900,
     label: "LeetCode solved",
-    sub: "rank ~48,290",
+    sub: "900+ questions",
+    suffix: "+",
     href: profile.links.leetcode,
   },
   {
-    value: 1692,
+    value: 1697,
     label: "CodeChef rating",
     sub: "peak rating",
     href: profile.links.codechef,
   },
   {
-    value: 1200,
+    value: 1500,
     label: "DSA problems",
     sub: "across LC, CF & CodeChef",
     suffix: "+",

@@ -74,6 +74,7 @@ export const projects: Project[] = [
   {
     title: "JobQueue",
     monogram: "JQ",
+    image: "/jobQueue.png",
     description:
       "Distributed job processing system with retries, backoff, and live state tracking. Fault-tolerant workers process pending, running, completed, and failed jobs with exponential backoff, structured status tracking, and a live dashboard.",
     tech: ["React", "Vite", "Node.js", "Express.js", "BullMQ", "PostgreSQL", "Redis"],

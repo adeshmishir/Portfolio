@@ -83,6 +83,7 @@ export const projects: Project[] = [
   {
     title: "AlgoPulse",
     monogram: "AP",
+    image: "/Algopulse.png",
     description:
       "Competitive programming analytics dashboard that tracks LeetCode profiles — contests, submission heatmaps, problem-solving trends, and performance stats — served by a FastAPI backend with a React frontend.",
     tech: ["FastAPI", "PostgreSQL", "React"],

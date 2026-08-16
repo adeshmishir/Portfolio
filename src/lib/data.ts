@@ -80,14 +80,34 @@ export const projects: Project[] = [
     tech: ["React", "Vite", "Node.js", "Express.js", "BullMQ", "PostgreSQL", "Redis"],
     source: "https://github.com/adeshmishir/jobQueue",
   },
+]
+
+export type ExperienceItem = {
+  role: string
+  company: string
+  companyUrl?: string
+  duration?: string
+  points: string[]
+}
+
+export const experience: ExperienceItem[] = [
   {
-    title: "AlgoPulse",
-    monogram: "AP",
-    image: "/Algopulse.png",
-    description:
-      "Competitive programming analytics dashboard that tracks LeetCode profiles — contests, submission heatmaps, problem-solving trends, and performance stats — served by a FastAPI backend with a React frontend.",
-    tech: ["FastAPI", "PostgreSQL", "React"],
-    source: "https://github.com/adeshmishir/AlgoPulse",
+    role: "Full Stack Developer Intern",
+    company: "Quantinent.ai",
+    companyUrl: "https://www.linkedin.com/company/quantinent/posts/?feedView=all",
+    points: [
+      "Built and maintained full-stack applications using React, Node.js, Express, MongoDB, Redis, and Docker.",
+      "Developed frontend features, integrated backend APIs, debugged issues, and contributed to application performance improvements.",
+    ],
+  },
+  {
+    role: "CP Team Member",
+    company: "Codame Club — IIIT Bhopal",
+    companyUrl: "https://www.linkedin.com/in/codame/",
+    points: [
+      "Selected among the Top 15 members for the Competitive Programming Team.",
+      "Participated in competitive programming contests and strengthened Data Structures & Algorithms and problem-solving skills.",
+    ],
   },
 ]
 

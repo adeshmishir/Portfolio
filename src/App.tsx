@@ -1,5 +1,6 @@
 import { Hero } from "@/components/site/Hero"
 import { About } from "@/components/site/About"
+import { Experience } from "@/components/site/Experience"
 import { Projects } from "@/components/site/Projects"
 import { Achievements } from "@/components/site/Achievements"
 import { Contact } from "@/components/site/Contact"
@@ -12,6 +13,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Experience />
         <Projects />
         <Achievements />
         <Contact />

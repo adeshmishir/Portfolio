@@ -133,6 +133,6 @@ export const achievements = [
   {
     title: "Competitive Programming Team Lead",
     description:
-      "Led the CP team at Codame, IIIT Bhopal — 1200+ DSA problems solved across platforms.",
+      "Led the CP team at Codame, IIIT Bhopal — 1500+ DSA problems solved across platforms.",
   },
 ]

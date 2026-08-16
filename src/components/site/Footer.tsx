@@ -1,11 +1,10 @@
 import { ChevronUp } from "lucide-react"
 import { profile } from "@/lib/data"
-import { GithubIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from "./icons"
+import { GithubIcon, LinkedinIcon, TwitterIcon } from "./icons"
 
 const socials = [
   { label: "GitHub", href: profile.links.github, Icon: GithubIcon },
   { label: "LinkedIn", href: profile.links.linkedin, Icon: LinkedinIcon },
-  { label: "Instagram", href: profile.links.instagram, Icon: InstagramIcon },
   { label: "Twitter", href: profile.links.twitter, Icon: TwitterIcon },
 ]
 
@@ -17,12 +16,6 @@ export function Footer() {
           <ChevronUp className="size-8" aria-hidden />
         </a>
 
-        <div className="footer-contact">
-          <a href={`tel:${profile.phone}`} rel="noreferrer">
-            {profile.phone}
-          </a>
-        </div>
-
         <div className="social-links">
           {socials.map(({ label, href, Icon }) => (
             <a
@@ -32,7 +25,7 @@ export function Footer() {
               target="_blank"
               aria-label={label}
             >
-              <Icon className="size-10" />
+              <Icon className="size-14" />
             </a>
           ))}
         </div>

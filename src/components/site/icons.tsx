@@ -26,6 +26,14 @@ export function InstagramIcon(props: IconProps) {
   )
 }
 
+export function TwitterIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
+      <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93Zm-1.3 19.5h2.04L6.5 3.24H4.32l13.28 17.41Z" />
+    </svg>
+  )
+}
+
 export function LeetCodeIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>

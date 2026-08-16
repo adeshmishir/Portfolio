@@ -23,6 +23,7 @@ export const profile = {
     codeforces: "https://codeforces.com/profile/mishra_adesh",
     codechef: "https://codechef.com/users/gam_blossom_68",
     instagram: "https://www.instagram.com/adesh_mishrra/",
+    twitter: "https://x.com/aadesssss",
   },
 }
 

@@ -883,6 +883,18 @@ a.achievements-stats__item:hover {
   margin-bottom: 2.5rem;
 }
 
+#contact .contact-wrapper__email {
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  transition: all 0.3s;
+}
+
+#contact .contact-wrapper__email:hover {
+  color: var(--color-white);
+}
+
 #contact .contact-wrapper__text,
 #contact .contact-wrapper a {
   font-size: 2.4rem;

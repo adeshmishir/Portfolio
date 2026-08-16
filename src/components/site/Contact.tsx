@@ -14,6 +14,9 @@ export function Contact() {
             <p className="contact-wrapper__text">
               Have a project, opportunity, or idea? Let's connect.
             </p>
+            <a className="contact-wrapper__email" href={`mailto:${profile.email}`}>
+              {profile.email}
+            </a>
             <a
               rel="noreferrer"
               target="_blank"

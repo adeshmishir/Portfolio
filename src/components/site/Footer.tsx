@@ -1,11 +1,12 @@
 import { ChevronUp } from "lucide-react"
 import { profile } from "@/lib/data"
-import { GithubIcon, InstagramIcon, LinkedinIcon } from "./icons"
+import { GithubIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from "./icons"
 
 const socials = [
   { label: "GitHub", href: profile.links.github, Icon: GithubIcon },
   { label: "LinkedIn", href: profile.links.linkedin, Icon: LinkedinIcon },
   { label: "Instagram", href: profile.links.instagram, Icon: InstagramIcon },
+  { label: "Twitter", href: profile.links.twitter, Icon: TwitterIcon },
 ]
 
 export function Footer() {
@@ -17,9 +18,6 @@ export function Footer() {
         </a>
 
         <div className="footer-contact">
-          <a href={`mailto:${profile.email}`} rel="noreferrer">
-            {profile.email}
-          </a>
           <a href={`tel:${profile.phone}`} rel="noreferrer">
             {profile.phone}
           </a>
@@ -34,7 +32,7 @@ export function Footer() {
               target="_blank"
               aria-label={label}
             >
-              <Icon className="size-8" />
+              <Icon className="size-10" />
             </a>
           ))}
         </div>

@@ -3,6 +3,23 @@ import { Reveal } from "./Reveal"
 import { Tilt } from "./Tilt"
 
 function ProjectShot({ project }: { project: Project }) {
+  if (project.image) {
+    return (
+      <div
+        className="project-shot"
+        role="img"
+        aria-label={`${project.title} screenshot`}
+      >
+        <img
+          src={project.image}
+          alt={`${project.title} screenshot`}
+          className="project-shot__img"
+          loading="lazy"
+        />
+      </div>
+    )
+  }
+
   return (
     <div
       className="project-shot"

@@ -29,6 +29,7 @@ export const profile = {
 export type Project = {
   title: string
   monogram: string
+  image?: string
   description: string
   tech: string[]
   demo?: string
@@ -39,6 +40,7 @@ export const projects: Project[] = [
   {
     title: "CodePilot AI",
     monogram: "CP",
+    image: "/CodePilot-Ai.png",
     description:
       "AI-powered software engineering agent that connects to GitHub repositories, understands large codebases, and helps developers analyze, debug, and improve their code. Performs semantic code search, RAG-based code Q&A, bug detection, refactoring suggestions, unit-test generation, and PR/code review.",
     tech: [
@@ -61,6 +63,7 @@ export const projects: Project[] = [
   {
     title: "CoinOracle",
     monogram: "CO",
+    image: "/CoinOracle.png",
     description:
       "Real-time cryptocurrency tracking platform with live pricing, deep market analytics, and interactive candlestick charts. Streams instant price updates over WebSockets, includes a global search modal and a BTC/USD converter, all wrapped in a premium dark UI.",
     tech: ["Next.js", "Tailwind CSS", "CoinGecko API", "WebSockets", "TypeScript"],

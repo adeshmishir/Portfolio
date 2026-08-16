@@ -633,6 +633,14 @@ section {
   text-align: left;
 }
 
+.project-shot__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
 .project-shot__bar {
   display: flex;
   align-items: center;

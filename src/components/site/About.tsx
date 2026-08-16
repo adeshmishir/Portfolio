@@ -22,8 +22,6 @@ export function About() {
               <div className="about-wrapper__image">
                 <img
                   className="img-fluid rounded shadow-lg"
-                  width="300"
-                  height="auto"
                   src={profile.portrait}
                   alt="Portrait of Adesh Mishra"
                 />

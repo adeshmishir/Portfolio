@@ -9,7 +9,7 @@ export const profile = {
   education: "IIIT Bhopal — B.Tech in Computer Science & Engineering",
   graduation: "Class of 2027 · CGPA 8.30",
   portfolio: "https://adeshmishra.me",
-  portrait: "/portrait.jpg",
+  portrait: "/profile.jpeg",
   resumeUrl:
     "https://drive.google.com/file/d/19ZC63eXszU8UM1z8Ig20bUnigzLfv0bY/view?usp=sharing",
   about: [

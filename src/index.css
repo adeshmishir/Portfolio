@@ -282,6 +282,24 @@ a:hover {
   height: auto;
 }
 
+.about-wrapper__image img {
+  width: 34rem;
+  height: 34rem;
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .about-wrapper__image img {
+    width: 29rem;
+    height: 29rem;
+    margin: 0 auto;
+  }
+}
+
 .rounded {
   border-radius: 0.375rem;
 }
@@ -486,7 +504,7 @@ section {
 }
 
 #about .about-wrapper__image img {
-  border-radius: 0.375rem;
+  border-radius: 50%;
 }
 
 /* ---------- Projects ---------- */
@@ -587,7 +605,7 @@ section {
 }
 
 #projects .project-wrapper__image {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 }
 

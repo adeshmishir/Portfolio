@@ -71,7 +71,14 @@ export function Projects() {
                 ))}
               </div>
 
-              <div className="mt-auto">
+              <div className="mt-auto flex flex-wrap gap-2">
+                {project.demo && (
+                  <Button asChild variant="outline" className="h-9 rounded-full px-4 text-xs">
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                      <ArrowUpRight className="size-3.5" /> Live Demo
+                    </a>
+                  </Button>
+                )}
                 <Button asChild variant="outline" className="h-9 rounded-full px-4 text-xs">
                   <a href={project.github} target="_blank" rel="noopener noreferrer">
                     <GithubIcon className="size-3.5" /> View on GitHub

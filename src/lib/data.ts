@@ -90,6 +90,20 @@ export const projects = [
     featured: true,
   },
   {
+    title: "CodePilot AI",
+    description:
+      "AI-powered software engineering agent that connects to GitHub repositories, understands large codebases, and helps developers analyze, debug, and improve their code.",
+    highlights: [
+      "Provides semantic code search, RAG-based code Q&A, bug detection, refactoring suggestions, unit-test generation, and PR/code review.",
+      "Architecture: GitHub Repository → Code Parsing → Chunking → Embeddings → Qdrant → Semantic Retrieval → RAG → LLM → Developer Response.",
+      "Designed to reduce the time developers spend manually navigating unfamiliar repositories and identifying code issues.",
+    ],
+    tags: ["Python", "FastAPI", "PostgreSQL", "Qdrant", "Tree-sitter", "GitPython", "Redis", "Docker", "React", "Vite", "Tailwind CSS", "LLM APIs"],
+    github: "https://github.com/adeshmishir/CodePilot-AI",
+    demo: "https://code-pilot-ai-puce.vercel.app/",
+    featured: true,
+  },
+  {
     title: "DocQuery AI",
     description:
       "AI-powered book Q&A assistant that answers questions across large PDF documents.",

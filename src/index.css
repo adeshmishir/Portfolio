@@ -758,6 +758,50 @@ section {
   );
 }
 
+/* ---------- More projects divider ---------- */
+.more-projects {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 8rem;
+}
+
+.more-projects__line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-light-grey);
+}
+
+.more-projects__link {
+  flex-shrink: 0;
+  padding: 0 2rem;
+  font-family: var(--font-main);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-dark-blue);
+  transition: all 0.3s;
+}
+
+.more-projects__link:hover,
+.more-projects__link:focus {
+  color: var(--color-primary);
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .more-projects {
+    gap: 1.2rem;
+    margin-top: 6rem;
+  }
+
+  .more-projects__link {
+    font-size: 1.3rem;
+    padding: 0 1rem;
+  }
+}
+
 /* ---------- Achievements ---------- */
 #achievements {
   background-color: var(--color-white);

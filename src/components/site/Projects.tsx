@@ -21,6 +21,21 @@ export function Projects() {
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} fromLeft={fromLeft} />
           ))}
+
+          <Reveal delay={600} origin="bottom">
+            <div className="more-projects">
+              <span className="more-projects__line" aria-hidden />
+              <a
+                className="more-projects__link"
+                href="https://github.com/adeshmishir"
+                target="_blank"
+                rel="noreferrer"
+              >
+                More Projects
+              </a>
+              <span className="more-projects__line" aria-hidden />
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

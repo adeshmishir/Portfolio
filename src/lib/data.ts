@@ -1,15 +1,21 @@
 export const profile = {
   name: "Adesh Mishra",
-  role: "Software Development Engineer",
-  subtitle: "B.Tech CSE · IIIT Bhopal · Class of 2027",
-  intro:
-    "I build reliable full-stack systems, enjoy solving hard engineering problems, and am exploring Gen AI workflows alongside product development.",
+  firstName: "Adesh",
+  headline: "I'm a Software Engineer & AI Developer.",
+  role: "Software Development Engineer / AI Engineer",
   email: "mishraadesh770@gmail.com",
-  phone: "+91 95694 01419",
+  phone: "+91 9569401419",
   location: "Bhopal, India",
+  education: "IIIT Bhopal — B.Tech in Computer Science & Engineering",
+  graduation: "Class of 2027 · CGPA 8.30",
+  portfolio: "https://adeshmishra.me",
+  portrait: "/portrait.jpg",
   resumeUrl:
     "https://drive.google.com/file/d/19ZC63eXszU8UM1z8Ig20bUnigzLfv0bY/view?usp=sharing",
-  portrait: "/portrait.jpg",
+  about: [
+    "I'm a Computer Science student at IIIT Bhopal focused on building scalable full-stack applications, backend systems, and AI-powered developer tools. My work spans software engineering, backend development, and AI/LLM applications.",
+    "I enjoy working across distributed systems and full-stack development — backed by a strong foundation in data structures and algorithms. I'm currently exploring Gen AI workflows and preparing for SDE internship and new-grad roles.",
+  ],
   links: {
     github: "https://github.com/adeshmishir",
     linkedin: "https://linkedin.com/in/adesh-mishra-646ba128b",
@@ -20,150 +26,90 @@ export const profile = {
   },
 }
 
-export const navSections = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
-  { id: "achievements", label: "Achievements" },
-  { id: "contact", label: "Contact" },
-]
+export type Project = {
+  title: string
+  monogram: string
+  description: string
+  tech: string[]
+  demo?: string
+  source: string
+}
 
-export const facts = [
-  { k: "Education", v: "B.Tech CSE, IIIT Bhopal" },
-  { k: "Grad year", v: "2027 · CGPA 8.30" },
-  { k: "Address", v: "Bhopal, India" },
-  { k: "Focus", v: "Backend / Full-stack" },
-]
-
-export const aboutInterests = [
-  "Distributed Systems",
-  "Backend Architecture",
-  "System Design",
-  "Gen AI / RAG",
-  "Competitive Programming",
-]
-
-export const aboutStats = [
-  { value: "3+", label: "full-stack products" },
-  { value: "10+", label: "REST APIs built" },
-  { value: "1200+", label: "DSA problems" },
-]
-
-export const experience = [
-  {
-    role: "Software Development Engineer Intern",
-    org: "Quantinent.ai · Remote",
-    dates: "Mar 2026 — May 2026",
-    tags: ["Node.js", "Express.js", "React.js", "MongoDB"],
-    bullets: [
-      "Engineered 3 full-stack modules (MongoDB, Express.js, React.js, Node.js) for a financial analytics dashboard — portfolio heatmaps and automated report generation — adopted by all internal analysts within 2 weeks of deployment.",
-      "Architected and deployed 10+ REST APIs serving portfolio analytics across 500 financial instruments, introducing request validation middleware and centralized error handling to cut API error rate by 35%.",
-      "Diagnosed an N+1 query pattern in MongoDB aggregation and profiled the React render tree, cutting median page load time by 40% (~2.5s to ~1.5s).",
-    ],
-  },
-  {
-    role: "Competitive Programming Team Lead",
-    org: "Codame Club · IIIT Bhopal",
-    dates: "Nov 2024 — Sep 2025",
-    tags: ["C++", "DSA", "Contest Design"],
-    bullets: [
-      "Ranked top 15 among 350+ students through consistent contest participation, applying advanced data structures and optimization techniques under time constraints.",
-      "Organized 6 competitive programming contests for 150+ participants — curating problem sets, validating test cases, and managing contest infrastructure end-to-end.",
-      "Mentored 50+ junior students through 5 technical workshops on DSA and competitive programming strategy.",
-    ],
-  },
-]
-
-export const projects = [
-  {
-    title: "JobQueue",
-    description:
-      "Distributed job processing system with retries, backoff, and live state tracking.",
-    highlights: [
-      "5 fault-tolerant background workers with automatic retries (up to 3 attempts), exponential backoff, and live states for pending, processing, completed, and failed jobs.",
-      "Reduced failed-job recovery time by 40% through structured status tracking and retry handling.",
-      "Containerized the API, Redis, PostgreSQL, and worker services with Docker for reproducible, horizontally scalable deployments.",
-    ],
-    tags: ["Node.js", "Express.js", "BullMQ", "Redis", "PostgreSQL", "Docker"],
-    github: "https://github.com/adeshmishir/jobQueue",
-    featured: true,
-  },
+export const projects: Project[] = [
   {
     title: "CodePilot AI",
+    monogram: "CP",
     description:
-      "AI-powered software engineering agent that connects to GitHub repositories, understands large codebases, and helps developers analyze, debug, and improve their code.",
-    highlights: [
-      "Provides semantic code search, RAG-based code Q&A, bug detection, refactoring suggestions, unit-test generation, and PR/code review.",
-      "Architecture: GitHub Repository → Code Parsing → Chunking → Embeddings → Qdrant → Semantic Retrieval → RAG → LLM → Developer Response.",
-      "Designed to reduce the time developers spend manually navigating unfamiliar repositories and identifying code issues.",
+      "AI-powered software engineering agent that connects to GitHub repositories, understands large codebases, and helps developers analyze, debug, and improve their code. Performs semantic code search, RAG-based code Q&A, bug detection, refactoring suggestions, unit-test generation, and PR/code review.",
+    tech: [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Qdrant",
+      "Tree-sitter",
+      "GitPython",
+      "Redis",
+      "Docker",
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "LLM APIs",
     ],
-    tags: ["Python", "FastAPI", "PostgreSQL", "Qdrant", "Tree-sitter", "GitPython", "Redis", "Docker", "React", "Vite", "Tailwind CSS", "LLM APIs"],
-    github: "https://github.com/adeshmishir/CodePilot-AI",
     demo: "https://code-pilot-ai-puce.vercel.app/",
-    featured: true,
+    source: "https://github.com/adeshmishir/CodePilot-AI",
   },
   {
-    title: "DocQuery AI",
+    title: "CoinOracle",
+    monogram: "CO",
     description:
-      "AI-powered book Q&A assistant that answers questions across large PDF documents.",
-    highlights: [
-      "Implemented an end-to-end RAG pipeline — PDF parsing, recursive chunking, embeddings, and FAISS vector search — supporting uploads up to 100 MB.",
-      "Indexed 1000+ text chunks, delivering context-aware answers with ~90% relevance across test queries.",
-      "Integrated retrieval chains, memory buffers, and prompt templates with Streamlit session state to preserve multi-turn context.",
-    ],
-    tags: ["Streamlit", "LangChain", "FAISS", "Mistral AI", "PyPDF", "Python"],
-    github:
-      "https://github.com/adeshmishir/Book_query_Resolver%28DocQuery%20AI%29",
-    featured: true,
+      "Real-time cryptocurrency tracking platform with live pricing, deep market analytics, and interactive candlestick charts. Streams instant price updates over WebSockets, includes a global search modal and a BTC/USD converter, all wrapped in a premium dark UI.",
+    tech: ["Next.js", "Tailwind CSS", "CoinGecko API", "WebSockets", "TypeScript"],
+    demo: "https://coin-oracle.vercel.app/",
+    source: "https://github.com/adeshmishir/CoinOracle",
   },
   {
-    title: "Forever",
+    title: "JobQueue",
+    monogram: "JQ",
     description:
-      "Full-stack clothing e-commerce platform with customer and admin workflows.",
-    highlights: [
-      "Built 15+ REST APIs supporting product, inventory, cart, and order flows across the platform.",
-      "Created JWT-authenticated customer and admin portals with 20+ reusable React components.",
-      "Configured Cloudinary for optimized image upload and delivery across 200+ product listings, reducing backend storage load by 70%.",
-    ],
-    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Cloudinary"],
-    github: "https://github.com/adeshmishir/Forever",
-    featured: true,
+      "Distributed job processing system with retries, backoff, and live state tracking. Fault-tolerant workers process pending, running, completed, and failed jobs with exponential backoff, structured status tracking, and a live dashboard.",
+    tech: ["React", "Vite", "Node.js", "Express.js", "BullMQ", "PostgreSQL", "Redis"],
+    source: "https://github.com/adeshmishir/jobQueue",
+  },
+  {
+    title: "AlgoPulse",
+    monogram: "AP",
+    description:
+      "Competitive programming analytics dashboard that tracks LeetCode profiles — contests, submission heatmaps, problem-solving trends, and performance stats — served by a FastAPI backend with a React frontend.",
+    tech: ["FastAPI", "PostgreSQL", "React"],
+    source: "https://github.com/adeshmishir/AlgoPulse",
   },
 ]
 
-export const skills = [
+export const cpStats = [
   {
-    category: "Languages",
-    items: ["C++", "Python", "JavaScript", "TypeScript", "C", "Java"],
+    value: 1455,
+    label: "Codeforces rating",
+    sub: "Specialist (max)",
+    href: profile.links.codeforces,
   },
   {
-    category: "Frontend",
-    items: ["React", "Next.js", "Tailwind CSS", "Redux", "HTML", "CSS"],
+    value: 863,
+    label: "LeetCode solved",
+    sub: "rank ~48,290",
+    href: profile.links.leetcode,
   },
   {
-    category: "Backend",
-    items: ["Node.js", "Express", "REST APIs"],
+    value: 1692,
+    label: "CodeChef rating",
+    sub: "peak rating",
+    href: profile.links.codechef,
   },
   {
-    category: "Databases",
-    items: ["PostgreSQL", "MongoDB", "MySQL", "Redis"],
+    value: 1200,
+    label: "DSA problems",
+    sub: "across LC, CF & CodeChef",
+    suffix: "+",
   },
-  {
-    category: "Infra & Tools",
-    items: ["Docker", "AWS EC2", "Git", "GitHub", "CI/CD", "Postman"],
-  },
-  {
-    category: "AI / Gen AI",
-    items: ["RAG", "LangChain", "Gen AI", "Prompt design", "pgvector", "FAISS"],
-  },
-]
-
-export const stats = [
-  { value: 1455, label: "Codeforces rating", sub: "Specialist (max)" },
-  { value: 863, label: "LeetCode solved", sub: "rank ~48,290" },
-  { value: 1692, label: "CodeChef rating", sub: "peak rating" },
-  { value: 1200, label: "DSA problems", sub: "across LC, CF & CodeChef", suffix: "+" },
 ]
 
 export const achievements = [

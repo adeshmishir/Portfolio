@@ -78,6 +78,7 @@ export const projects: Project[] = [
     description:
       "Distributed job processing system with retries, backoff, and live state tracking. Fault-tolerant workers process pending, running, completed, and failed jobs with exponential backoff, structured status tracking, and a live dashboard.",
     tech: ["React", "Vite", "Node.js", "Express.js", "BullMQ", "PostgreSQL", "Redis"],
+    demo: "https://job-queue-nine.vercel.app/",
     source: "https://github.com/adeshmishir/jobQueue",
   },
 ]
